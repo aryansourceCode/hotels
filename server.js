@@ -4,7 +4,7 @@ const app=express();
 const db=require('./db')
 const personRoutes=require('./routes/personRoutes')
 const itemRoutes=require('./routes/itemRoutes')
-
+require('dotenv').config();
 
 app.use(bodyParser.json());
 app.get('/',(req,res)=>{
@@ -17,6 +17,8 @@ app.get('/biryani',(req,res)=>{
 app.use('/items',itemRoutes);
 
 app.use('/person',personRoutes);
-app.listen(2000,()=>{
+
+const PORT= process.env.PORT || 2000;
+app.listen(PORT,()=>{
     console.log("listening to port 2000");
 })
